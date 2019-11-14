@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "rps-juego",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
