@@ -3,5 +3,7 @@
     padding: 0;
 }
 .RPS .paperCustom {
-    padding: 4px;
+    padding: 18px;
+    display: flex;
+    justify-content: center;
 }
