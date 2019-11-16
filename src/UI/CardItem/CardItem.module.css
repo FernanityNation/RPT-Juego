@@ -1,0 +1,5 @@
+.CardItem {
+    border: 1px solid #cfcfcf;
+    padding: 10px;
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.8);
+}
