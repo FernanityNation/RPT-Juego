@@ -115,25 +115,25 @@ export default class RPS extends React.Component {
 
         return (
             <div className={classes.RPS}>
-                <h2 style={{textAlign: 'center'}}>Choose an option</h2>
+                <h2 style={{textAlign: 'center'}}>Elige una opcion</h2>
                 <CardRow>
                     <CardItem 
                         selected={cards[0].selected}
-                        cardAction={<Button disabled={hasSelectedOption} clicked={this.selectedCardHandler.bind(this, 'rock')}>Rock</Button>}>
-                        <img src={ic_rock} alt='Rock' title='Choose the Rock' />
+                        cardAction={<Button disabled={hasSelectedOption} clicked={this.selectedCardHandler.bind(this, 'rock')}>Piedra</Button>}>
+                        <img src={ic_rock} alt='Rock' title='Elige la piedra' />
                     </CardItem>
                     <CardItem
                         selected={cards[1].selected}
-                        cardAction={<Button disabled={hasSelectedOption} clicked={this.selectedCardHandler.bind(this, 'paper')}>Paper</Button>}>
-                        <img src={ic_paper} alt='Paper' title='Choose the Paper' />
+                        cardAction={<Button disabled={hasSelectedOption} clicked={this.selectedCardHandler.bind(this, 'paper')}>Papel</Button>}>
+                        <img src={ic_paper} alt='Paper' title='Elige el papel' />
                     </CardItem>
                     <CardItem
                         selected={cards[2].selected}
-                        cardAction={<Button disabled={hasSelectedOption} clicked={this.selectedCardHandler.bind(this, 'scissor')}>Scissor</Button>}>
-                        <img src={ic_scissor} alt='Scissor' title='Choose the Scissor' />
+                        cardAction={<Button disabled={hasSelectedOption} clicked={this.selectedCardHandler.bind(this, 'scissor')}>Tijeras</Button>}>
+                        <img src={ic_scissor} alt='Scissor' title='Elige las tijeras' />
                     </CardItem>
                 </CardRow>
-                {this.state.loading ? <h3 style={{textAlign: 'center'}}>Thinking...</h3>: null}
+                {this.state.loading ? <h3 style={{textAlign: 'center'}}>Pensando...</h3>: null}
                 {hasSelectedComputerOption ? <ComputerCards cards={cardsComputer} />: null}
                 {
                     this.state.finished 
