@@ -26,7 +26,19 @@ export default class RPS extends React.Component {
             {id: 2, label: 'paper', selected: false},
             {id: 3, label: 'scissor', selected: false}
         ],
-        loading: false
+        loading: false,
+        combs: [
+            {player: 'rock', cpu: 'rock', condition: 'tie'},
+            {player: 'rock', cpu: 'paper', condition: 'lose'},
+            {player: 'rock', cpu: 'scissor', condition: 'win'},
+            {player: 'paper', cpu: 'rock', condition: 'win'},
+            {player: 'paper', cpu: 'paper', condition: 'tie'},
+            {player: 'paper', cpu: 'scissor', condition: 'lose'},
+            {player: 'scissor', cpu: 'rock', condition: 'lose'},
+            {player: 'scissor', cpu: 'paper', condition: 'win'},
+            {player: 'scissor', cpu: 'scissor', condition: 'tie'}
+        ],
+        finished: null
     }
 
     selectedCardHandler = (label) => {
@@ -47,12 +59,51 @@ export default class RPS extends React.Component {
             const num = getRandomNumber(0, updatedComputerOptions.length)
             updatedComputerOptions[num].selected = !updatedComputerOptions[num].selected
             
+            this.finishTheGame()
+
             this.setState({
                 loading: false,
                 computerCards: updatedComputerOptions
             })
         }, 1000)
     }
+
+    finishTheGame = () => {
+        const combinations = [...this.state.combs]
+        const playerSelected = this.state.cards.find(v => v.selected === true)
+        const cpuSelected = this.state.computerCards.find(v => v.selected === true)
+        const combi = combinations.find(v => v.player === playerSelected.label && v.cpu == cpuSelected.label)
+        
+        let condition = ''
+        if (combi.condition === 'tie') {
+            condition = 'Empate'
+        }
+        if (combi.condition === 'win') {
+            condition = 'Ganaste'
+        }
+        if (combi.condition === 'lose') {
+            condition = 'Perdiste'
+        }
+
+        this.setState({finished: condition})
+    }
+
+    resetGameHandler = () => {
+        let updatedCards = [...this.state.cards]
+        let updatedComputeCards = [...this.state.computerCards]
+        updatedCards.forEach((v, i) => {
+            updatedCards[i].selected = false
+        })
+        updatedComputeCards.forEach((v, i) => {
+            updatedComputeCards[i].selected = false
+        })
+        this.setState({
+            finished: null,
+            cards: updatedCards,
+            computerCards: updatedComputeCards
+        })
+    }
+
 
     render() {
         const cards = this.state.cards
@@ -84,6 +135,17 @@ export default class RPS extends React.Component {
                 </CardRow>
                 {this.state.loading ? <h3 style={{textAlign: 'center'}}>Thinking...</h3>: null}
                 {hasSelectedComputerOption ? <ComputerCards cards={cardsComputer} />: null}
+                {
+                    this.state.finished 
+                        ? 
+                            (
+                                <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                                    <h1 style={{textAlign: 'center', marginTop: '50px'}}>{this.state.finished}</h1> 
+                                    <Button clicked={this.resetGameHandler}>Reset</Button>
+                                </div>
+                            )
+                        : null
+                }
             </div>
         )
     }
