@@ -5,7 +5,7 @@
     box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.8);
     max-height: 120px;
     max-width: 150px;
-    transition: all .2s ease-out;
+    transition: all .3s ease-out;
 }
 
 
@@ -17,5 +17,19 @@
 
 .CardSelected {
     transform: rotateY(360deg);
+}
+
+.cardOverlay {
     background-color: #bdbdbd;
+    position: absolute;
+    width: 135px;
+    height: 139px;
+    margin-left: 21px;
+    opacity: .5;
+    z-index: 10;
+    transition: all .2s ease-out;
+}
+
+.activeOverlay {
+    transform: rotateY(360deg);
 }
