@@ -4,6 +4,6 @@ import classes from './Button.module.css'
 
 
 const button = props => 
-    <button className={classes.Button}>{props.children}</button>
+    <button className={classes.Button} disabled={props.disabled} onClick={props.clicked}>{props.children}</button>
 
 export default button

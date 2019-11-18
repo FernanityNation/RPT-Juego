@@ -25,3 +25,8 @@
 .Button:active {
     transform: scale(1.2);
 }
+
+.Button:disabled {
+    cursor: default;
+    background-color: #509191;
+}
