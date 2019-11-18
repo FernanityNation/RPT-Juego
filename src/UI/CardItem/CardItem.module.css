@@ -1,10 +1,24 @@
 .CardItem {
     border: 1px solid #cfcfcf;
     padding: 10px;
+    margin: 0px 20px;
     box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.8);
+    max-height: 120px;
+    max-width: 150px;
+    transition: all .2s ease-out;
+}
+
+.CardItem img {
+    width: 120px;
+    height: 110px;
 }
 
 .cardOption {
     display: flex;
     flex-direction: column;
+}
+
+.CardSelected {
+    transform: rotateY(360deg);
+    background-color: #bdbdbd;
 }
